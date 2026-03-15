@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>~/startpage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231e1e2e'/><text x='3' y='22' font-family='monospace' font-size='16' fill='%23cba6f7'>%3E</text><text x='16' y='22' font-family='monospace' font-size='16' fill='%23cdd6f4'>_</text></svg>">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="gif">
+                <img src="cat.webp" />
+            </div>
+        </div>
+
+        <div class="right-container">
+            <div class="head">
+                <div class="clock-block">
+                    <span id="clock"></span>
+                    <span class="clock-sep">—</span>
+                    <span id="date-display"></span>
+                </div>
+                <p>&gt; cd ~/<span class="blinking">_</span></p>
+            </div>
+
+            <div class="bookmarks">
+                <div class="category">
+                    <div class="links">
+                        <li class="title">mail</li>
+                        <li><a href="https://app.tuta.com/mail/">tuta</a></li>
+                        <li><a href="https://mail.google.com/mail/u/0/#inbox">gmail</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">dev</li>
+                        <li><a href="https://github.com/">github</a></li>
+                        <li><a href="https://claude.ai/">claude</a></li>
+                        <li><a href="https://gemini.google.com/app">gemini</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">social</li>
+                        <li><a href="https://www.reddit.com/r/all/hot/">reddit</a></li>
+                        <li><a href="https://bsky.app/">bsky</a></li>
+                        <li><a href="https://fmhy.net/">fmfy</a></li>
+                        <li><a href="https://ebay.de/">ebay</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">play</li>
+                        <li><a href="https://www.twitch.tv/directory/following/live">twitch</a></li>
+                        <li><a href="https://www.youtube.com/feed/subscriptions">youtube</a></li>
+                        <li><a href="https://sumi.news">sumi.news</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function pad(n) { return String(n).padStart(2, '0'); }
+
+        function updateClock() {
+            const now = new Date();
+            const h = pad(now.getHours());
+            const m = pad(now.getMinutes());
+            const s = pad(now.getSeconds());
+            document.getElementById('clock').textContent = h + ':' + m + ':' + s;
+
+            const days = ['sun','mon','tue','wed','thu','fri','sat'];
+            const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+            const dow = days[now.getDay()];
+            const day = pad(now.getDate());
+            const mon = months[now.getMonth()];
+            const yr = now.getFullYear();
+            document.getElementById('date-display').textContent = dow + ' ' + day + ' ' + mon + ' ' + yr;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+
+</html>
