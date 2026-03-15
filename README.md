@@ -2,7 +2,7 @@
 
 A minimal browser startpage with a terminal aesthetic.
 
-![preview](startpage.gif)
+![preview](image.png)
 
 ## Features
 
