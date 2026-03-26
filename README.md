@@ -14,8 +14,8 @@ A minimal browser startpage with a terminal aesthetic.
 
 ## Fonts
 
-- [Fira Code](https://fonts.google.com/specimen/Fira+Code) — body & clock
-- [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono) — heading
+- [Fira Code](https://fonts.google.com/specimen/Poppins) — everything readable: links, clock, category titles
+- [VT323](https://fonts.google.com/specimen/VT323?preview.script=Latn) — heading for the retro terminal look
 
 Both loaded via Google Fonts, no install needed.
 
