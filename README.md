@@ -2,7 +2,8 @@
 
 A minimal browser startpage with a terminal / 90s CRT aesthetic.
 
-![preview](preview.png)
+![preview](SD.png)
+![preview](SL.png)
 
 ## Features
 
