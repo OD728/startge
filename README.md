@@ -10,8 +10,9 @@ A minimal browser startpage with a terminal / 90s CRT aesthetic.
 - Live clock with date, fixed at bottom-center
 - Blinking cursor animation
 - Custom `> _` favicon (Catppuccin Mocha colors)
-- [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme
-- Random image on every page load
+- [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme (dark)
+- [Catppuccin Latte](https://github.com/catppuccin/catppuccin) color scheme (light)
+- Light/dark mode toggle, preference saved across sessions
 - CRT scanline effect on image and page background
 - Phosphor glow on heading and links
 - Pixel-style border around image
@@ -31,29 +32,13 @@ Clone or download the repo, then open `index.html` in your browser. Set it as yo
 git clone https://github.com/yourusername/startpage
 ```
 
-Make sure all image files are in the same folder as `index.html`:
+File structure:
 
 ```
 startpage/
 ├── index.html
 ├── style.css
-├── cat.webp
-├── 001.webp
-├── 002.webp
-└── ...
-```
-
-## Adding images
-
-Open `index.html` and add your filename to the `images` array in the script at the bottom:
-
-```js
-const images = [
-    'cat.webp',
-    '001.webp',
-    '002.webp',
-    '010.webp',  // ← add new files here
-];
+└── cat.webp
 ```
 
 Then drop the file in the same folder. No other changes needed.
