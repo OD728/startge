@@ -2,21 +2,28 @@
 
 A minimal browser startpage with a terminal / 90s CRT aesthetic.
 
-![preview](SD.png)
-![preview](SL.png)
+![preview](001.png)
+![preview](002.png)
 
 ## Features
 
 - Categorized bookmarks
 - Live clock with date, fixed at bottom-center
 - Blinking cursor animation
-- Custom `> _` favicon (Catppuccin Mocha colors)
-- [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme (dark)
-- [Catppuccin Latte](https://github.com/catppuccin/catppuccin) color scheme (light)
-- Light/dark mode toggle, preference saved across sessions
+- Custom `> _` favicon
+- Theme switcher — cycles between **Dracula** (default) and **Catppuccin Mocha** with a random accent color on every switch
 - CRT scanline effect on image and page background
 - Phosphor glow on heading and links
-- Pixel-style border around image
+- Pixel-style border around image, accent-colored per theme
+
+## Themes
+
+| Theme | Description |
+|---|---|
+| [Dracula](https://draculatheme.com) | Default. Dark purple palette |
+| [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) | Picks a random accent on every switch — rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, or lavender |
+
+Theme preference is saved across sessions via `localStorage`.
 
 ## Fonts
 
@@ -39,27 +46,31 @@ File structure:
 startpage/
 ├── index.html
 ├── style.css
-└── cat.webp
+└── cat.webp        ← swap this for any image you like
 ```
 
-Then drop the file in the same folder. No other changes needed.
+To use a different image, update the `src` in `index.html`:
+
+```html
+<img src="your-image.webp" />
+```
 
 ## Customization
 
-Edit bookmark links directly in `index.html`. Colors are all CSS variables in `style.css`:
+Edit bookmark links directly in `index.html`. To add a new category, copy an existing `.category` block and update the title and links.
 
-```css
---color-bg:           var(--ctp-base);
---color-fg:           var(--ctp-text);
---color-link:         var(--ctp-subtext0);
---color-link-visited: var(--ctp-lavender);
---color-link-hover:   var(--ctp-mauve);
+To change which Mocha accent colors are available, edit the `mochaAccents` array in the script at the bottom of `index.html`:
+
+```js
+const mochaAccents = [
+    { name: 'mauve', hex: '#cba6f7' },
+    { name: 'blue',  hex: '#89b4fa' },
+    // add or remove entries here
+];
 ```
-
-Swap any `--ctp-*` token to change the accent. Available: `--ctp-blue`, `--ctp-teal`, `--ctp-green`, `--ctp-peach`, `--ctp-pink`, `--ctp-mauve`.
 
 ## Credits
 
-[Cat GIF/Pictures artist Avogado6](https://x.com/avogado6/status/1165595520967954432)
+[Cat artwork by Avogado6](https://x.com/avogado6/status/1165595520967954432)
 
 [Startpage inspired by kencx](https://github.com/kencx/startpage)
