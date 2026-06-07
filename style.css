@@ -70,8 +70,8 @@ body.dracula {
 
     --color-bg:           var(--ctp-base);
     --color-fg:           var(--ctp-text);
-    --color-link:         var(--ctp-overlay0);
-    --color-link-visited: var(--ctp-lavender);
+    --color-link:         #a9b1d6;
+    --color-link-visited: #a9b1d6;
     --color-link-hover:   var(--ctp-pink);
 }
 
@@ -243,7 +243,7 @@ a:link {
 }
 
 a:visited {
-  color: var(--color-link-visited);
+  color: var(--color-link);
 }
 
 a:hover {
