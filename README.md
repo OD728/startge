@@ -156,4 +156,5 @@ const mochaAccents = [
 ## Credits
 
 [Gif artwork by alphacoders.com](https://gifs.alphacoders.com/gifs/view/215468)
+
 [Startpage inspired by kencx](https://github.com/kencx/startpage)
