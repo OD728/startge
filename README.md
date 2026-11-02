@@ -25,7 +25,17 @@ A minimal browser startpage with a Blade Runner / cyberpunk terminal aesthetic.
 | 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Default. Cyan and magenta neon on a dark purple-blue base |
 | 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
 
-The toggle button in the top-right shows the theme you will switch to. The choice is saved with `localStorage`.
+### Light mode
+
+Each theme has a matching light palette: pale, smoggy backgrounds with deeper accents so text stays readable. Text halos are dropped and the image glow is softened, since glows look smudgy on a light page.
+
+| Theme | Background | Accent | Secondary |
+|---|---|---|---|
+| 2019 light | `#dde2ec` | `#17697b` | `#a23a68` |
+| 2049 light | `#eadfd1` | `#9c5a1d` | `#28746d` |
+
+The two buttons in the top-right switch mode (`light` / `dark`) and theme (`2019` / `2049`). Each shows what you will switch to, and both choices are saved with `localStorage`.
+
 
 ## Fonts
 
