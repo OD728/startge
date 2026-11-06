@@ -2,7 +2,7 @@
 
 A minimal browser startpage with a dark-mode cyberpunk terminal aesthetic.
 
-![preview](2026.png)
+![preview](imageCYP.png)
 
 ## Features
 
