@@ -96,9 +96,7 @@ body.neon {
 <details>
 <summary>OLD Blade Runner Design</summary>
 
-The previous version: a muted Blade Runner terminal look with two themes, 2019 and 2049, plus a light mode. The full code is on the [`blade-runner`](../../tree/blade-runner) branch (also tagged `blade-runner-v1`).
-
-![preview](2026.png)
+![preview](BR2026.png)
 
 ### Features
 
