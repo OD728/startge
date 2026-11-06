@@ -1,6 +1,6 @@
 # ~/startpage
 
-A minimal browser startpage with a Blade Runner / cyberpunk terminal aesthetic.
+A minimal browser startpage with a dark-mode cyberpunk terminal aesthetic.
 
 ![preview](2026.png)
 
@@ -9,33 +9,23 @@ A minimal browser startpage with a Blade Runner / cyberpunk terminal aesthetic.
 - Categorized bookmarks
 - Live clock with date, fixed at bottom-center
 - Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
-- Custom `> _` favicon in cyan and magenta
-- Theme switcher: cycles between **2019** (default) and **2049**, remembered across sessions
+- Custom `> _` favicon in cyan and pink
+- Theme switcher: cycles between **neon** (default) and **volt**, remembered across sessions
 - Animated pixel-art image with scanlines, a soft duotone tint to match the active theme and HUD-style corner brackets
 - Ambient glow behind the image: a blurred copy of the animation bleeds out around the frame, so the glow changes color as the scene moves
-- Small `tyrell terminal 07` tag in the top-left corner
-- Muted accent colors and soft glows, so nothing is harsh on the eyes
+- Small `night city terminal 07` tag in the top-left corner
+- Saturated neon accents with soft glows on a near-black background
 - Responsive: below 1250px wide the image stacks above the links
 - Respects `prefers-reduced-motion` (the flicker and cursor blink are switched off)
 
 ## Themes
 
+Dark mode only. Two cyberpunk palettes, switched with the button in the top-right (it shows the theme you will switch to, and your choice is saved with `localStorage`).
+
 | Theme | Class | Background | Accent | Secondary | Description |
 |---|---|---|---|---|---|
-| 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Default. Cyan and magenta neon on a dark purple-blue base |
-| 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
-
-### Light mode
-
-Each theme has a matching light palette: pale, smoggy backgrounds with deeper accents so text stays readable. Text halos are dropped and the image glow is softened, since glows look smudgy on a light page.
-
-| Theme | Background | Accent | Secondary |
-|---|---|---|---|
-| 2019 light | `#dde2ec` | `#17697b` | `#a23a68` |
-| 2049 light | `#eadfd1` | `#9c5a1d` | `#28746d` |
-
-The two buttons in the top-right switch mode (`light` / `dark`) and theme (`2019` / `2049`). Each shows what you will switch to, and both choices are saved with `localStorage`.
-
+| neon | `neon` | `#0b0b14` | `#00e5ff` cyan | `#d12e75` hot pink | Default. Electric cyan and pink on near-black violet |
+| volt | `volt` | `#0c0c0a` | `#fcee0a` yellow | `#00d9e8` cyan | Cyberpunk-yellow with a cyan pop on near-black |
 
 ## Fonts
 
@@ -89,6 +79,65 @@ Edit bookmark links directly in `index.html`. To add a new category, copy an exi
 **Colors.** Each theme is a block of CSS variables at the top of `style.css`:
 
 ```css
+body.neon {
+  --bg: #0b0b14;      /* page background */
+  --fg: #c9d1ea;      /* body text */
+  --link: #8b93bd;    /* link color */
+  --accent: #00e5ff;  /* heading, hover, brackets, clock */
+  --accent2: #d12e75; /* category titles, cursor */
+  --dim: #4a4a78;     /* muted details */
+}
+```
+
+**Adding a theme.** Add a new `body.yourtheme { ... }` block with the same variables, then add it to the `themes` array and the `labels` object in the script at the bottom of `index.html`.
+
+**Glow strength.** In the `.left-container::after` rule in `style.css`, `opacity` controls how strong the glow is, and `blur()` together with `inset` controls how far it spreads. The mask in the same rule fades the glow's edges so it never shows a hard box line.
+
+<details>
+<summary>OLD Blade Runner Design</summary>
+
+The previous version: a muted Blade Runner terminal look with two themes, 2019 and 2049, plus a light mode. The full code is on the [`blade-runner`](../../tree/blade-runner) branch (also tagged `blade-runner-v1`).
+
+![preview](2026.png)
+
+### Features
+
+- Categorized bookmarks
+- Live clock with date, fixed at bottom-center
+- Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
+- Custom `> _` favicon in cyan and magenta
+- Theme switcher: cycles between **2019** (default) and **2049**, remembered across sessions
+- Light / dark mode toggle, independent of the theme
+- Animated pixel-art image with scanlines, a soft duotone tint to match the active theme and HUD-style corner brackets
+- Ambient glow behind the image: a blurred copy of the animation bleeds out around the frame, so the glow changes color as the scene moves
+- Small `tyrell terminal 07` tag in the top-left corner
+- Muted accent colors and soft glows, so nothing is harsh on the eyes
+- Responsive: below 1250px wide the image stacks above the links
+- Respects `prefers-reduced-motion` (the flicker and cursor blink are switched off)
+
+### Themes
+
+| Theme | Class | Background | Accent | Secondary | Description |
+|---|---|---|---|---|---|
+| 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Default. Cyan and magenta neon on a dark purple-blue base |
+| 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
+
+#### Light mode
+
+Each theme has a matching light palette: pale, smoggy backgrounds with deeper accents so text stays readable. Text halos are dropped and the image glow is softened, since glows look smudgy on a light page.
+
+| Theme | Background | Accent | Secondary |
+|---|---|---|---|
+| 2019 light | `#dde2ec` | `#17697b` | `#a23a68` |
+| 2049 light | `#eadfd1` | `#9c5a1d` | `#28746d` |
+
+The two buttons in the top-right switch mode (`light` / `dark`) and theme (`2019` / `2049`). Each shows what you will switch to, and both choices are saved with `localStorage`.
+
+### Customization
+
+Each theme is a block of CSS variables at the top of `style.css`:
+
+```css
 body.rain {
   --bg: #282a36;      /* page background */
   --fg: #b8c4d4;      /* body text */
@@ -99,12 +148,10 @@ body.rain {
 }
 ```
 
-**Adding a theme.** Add a new `body.yourtheme { ... }` block with the same variables, then add it to the `themes` array and the `labels` object in the script at the bottom of `index.html`.
-
-**Glow strength.** In the `.left-container::after` rule in `style.css`, `opacity` controls how strong the glow is, and `blur()` together with `inset` controls how far it spreads. The mask in the same rule fades the glow's edges so it never shows a hard box line.
+</details>
 
 <details>
-<summary>OLD Design</summary>
+<summary>OLD Catppuccin/Dracula Design</summary>
 
 The original version: a minimal terminal / 90s CRT look with Dracula and Catppuccin Mocha themes.
 
