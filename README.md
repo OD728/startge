@@ -1,6 +1,6 @@
 # ~/startpage
 
-A minimal browser startpage with a dark-mode cyberpunk terminal aesthetic.
+**Browser startpage:** a minimal startpage with a dark-mode cyberpunk terminal aesthetic.
 
 ![preview](imageCYP.png)
 
