@@ -10,7 +10,7 @@
 - Live clock with date, fixed at bottom-center
 - Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
 - Custom `> _` favicon in cyan and pink
-- Theme switch: a three-stop pill (**vi**, **2019**, **dracula**) in the top-right. The knob slides to the chosen theme and all colors fade over instead of snapping. Your choice is saved with `localStorage`
+- Theme switch: a three-stop pill (**vi**, **dracula**, **2049**) in the top-right. The knob slides to the chosen theme and all colors fade over instead of snapping. Your choice is saved with `localStorage`
 - Magnetic links: a bookmark leans toward the cursor when you get close and springs back when you leave
 - Cursor dot grid: a soft patch of dots appears around the mouse in the theme's accent color and ripples away from it
 - Animated pixel-art image with scanlines, a soft gradient tint to match the active theme and HUD-style corner brackets
@@ -26,8 +26,8 @@ Dark mode only.
 | Theme | Class | Background | Accent | Secondary | Description |
 |---|---|---|---|---|---|
 | vi | `vice` | `#141022` | `#e13fbd` pink | `#ffbc53` orange | Default. GTA VI style blue, pink and orange sunset |
-| 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Cyan and magenta neon on a dark purple-blue base |
 | dracula | `dracula` | `#282a36` | `#ff79c6` pink | `#bd93f9` purple | The [Dracula](https://draculatheme.com) color scheme |
+| 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
 
 ## Fonts
 
