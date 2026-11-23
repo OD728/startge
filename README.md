@@ -9,7 +9,8 @@
 - Categorized bookmarks
 - Live clock with date, fixed at bottom-center
 - Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
-- Custom `> _` favicon in cyan and pink
+- Custom favicon (`favicon.ico`)
+- A random picture on every reload, picked from six animated pixel-art scenes (never the same one twice in a row)
 - Theme switch: a three-stop pill (**vi**, **dracula**, **2049**) in the top-right. The knob slides to the chosen theme and all colors fade over instead of snapping. Your choice is saved with `localStorage`
 - Magnetic links: a bookmark leans toward the cursor when you get close and springs back when you leave
 - Cursor dot grid: a soft patch of dots appears around the mouse in the theme's accent color and ripples away from it
@@ -51,26 +52,21 @@ File structure:
 startge/
 ├── index.html
 ├── style.css
-└── cyber002.webp   ← swap this for any image you like
+├── favicon.ico
+└── cyber001.webp … cyber006.webp   ← the pictures, one is picked at random
 ```
 
-### Changing the image
+### Changing the pictures
 
-The image is used in two places, so update both:
+The pictures are listed in the `pics` array in the script at the bottom of `index.html`:
 
-1. `index.html`, the visible image:
-
-```html
-<img src="your-image.webp" alt="" />
+```js
+const pics = ['cyber001.webp', 'cyber002.webp', 'cyber003.webp', 'cyber004.webp', 'cyber005.webp', 'cyber006.webp'];
 ```
 
-2. `style.css`, the blurred glow behind it (`.left-container::after`):
+Add or remove file names there. The blurred glow behind the frame follows the chosen picture automatically.
 
-```css
-background: url("your-image.webp") center / cover no-repeat;
-```
-
-The frame is set to a 460×575 portrait ratio. If your image has a different shape, change `width`/`height` on `.left-container` and `.gif img`, and the `aspect-ratio` value in the narrow-screen media query in `style.css`.
+The frame is set to a 460×575 portrait ratio, and other shapes are cropped to fit. Animated webp works well, but file size adds up, so resize to the display size and compress.
 
 ## Customization
 
