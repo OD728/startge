@@ -1,8 +1,8 @@
 # ~/startpage
 
-**Browser startpage:** a minimal startpage with a dark-mode cyberpunk terminal aesthetic.
+**Browser startpage:** a dark cyberpunk terminal startpage with three neon themes.
 
-![preview](imageCYP.png)
+![preview](image26.png)
 
 ## Features
 
@@ -10,27 +10,29 @@
 - Live clock with date, fixed at bottom-center
 - Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
 - Custom `> _` favicon in cyan and pink
-- Theme switcher: cycles between **neon** (default) and **volt**, remembered across sessions
-- Animated pixel-art image with scanlines, a soft duotone tint to match the active theme and HUD-style corner brackets
+- Theme switch: a three-stop pill (**vi**, **2019**, **2049**) in the top-right. The knob slides to the chosen theme and all colors fade over instead of snapping. Your choice is saved with `localStorage`
+- Magnetic links: a bookmark leans toward the cursor when you get close and springs back when you leave
+- Cursor dot grid: a soft patch of dots appears around the mouse in the theme's accent color and ripples away from it
+- Animated pixel-art image with scanlines, a soft gradient tint to match the active theme and HUD-style corner brackets
 - Ambient glow behind the image: a blurred copy of the animation bleeds out around the frame, so the glow changes color as the scene moves
-- Small `night city terminal 07` tag in the top-left corner
-- Saturated neon accents with soft glows on a near-black background
+- Small `tyrell terminal 07` tag in the top-left corner
 - Responsive: below 1250px wide the image stacks above the links
-- Respects `prefers-reduced-motion` (the flicker and cursor blink are switched off)
+- Respects `prefers-reduced-motion` (flicker, cursor blink, magnetic links and the moving dot grid are switched off)
 
 ## Themes
 
-Dark mode only. Two cyberpunk palettes, switched with the button in the top-right (it shows the theme you will switch to, and your choice is saved with `localStorage`).
+Dark mode only.
 
 | Theme | Class | Background | Accent | Secondary | Description |
 |---|---|---|---|---|---|
-| neon | `neon` | `#0b0b14` | `#00e5ff` cyan | `#d12e75` hot pink | Default. Electric cyan and pink on near-black violet |
-| volt | `volt` | `#0c0c0a` | `#fcee0a` yellow | `#00d9e8` cyan | Cyberpunk-yellow with a cyan pop on near-black |
+| vi | `vice` | `#141022` | `#e13fbd` pink | `#ffbc53` orange | Default. Blue, pink and orange sunset |
+| 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Cyan and magenta neon on a dark purple-blue base |
+| 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
 
 ## Fonts
 
-- [Rajdhani](https://fonts.google.com/specimen/Rajdhani): links and category titles
-- [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono): clock, date, theme button and corner tag
+- [Oxanium](https://fonts.google.com/specimen/Oxanium): links and category titles
+- [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono): clock, date, theme switch and corner tag
 - [VT323](https://fonts.google.com/specimen/VT323): heading only, for the retro terminal look
 
 All loaded via Google Fonts, no install needed.
@@ -40,13 +42,13 @@ All loaded via Google Fonts, no install needed.
 Clone or download the repo, then open `index.html` in your browser. Set it as your browser's homepage or use an extension like [New Tab Redirect](https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna).
 
 ```
-git clone https://github.com/yourusername/startpage
+git clone https://github.com/OD728/startge
 ```
 
 File structure:
 
 ```
-startpage/
+startge/
 ├── index.html
 ├── style.css
 └── cyber002.webp   ← swap this for any image you like
@@ -68,148 +70,33 @@ The image is used in two places, so update both:
 background: url("your-image.webp") center / cover no-repeat;
 ```
 
-The frame is set to a 460×575 portrait ratio. If your image has a different shape, change `width`/`height` on `.left-container` and `.gif img`, and the `aspect-ratio` value in the narrow-screen media query at the bottom of `style.css`.
-
-An animated webp works well here, but file size adds up. The bundled one is resized to the display size and compressed to about 2 MB. Resizing to the size it is shown at and lowering the quality is the easiest way to shrink a larger file.
+The frame is set to a 460×575 portrait ratio. If your image has a different shape, change `width`/`height` on `.left-container` and `.gif img`, and the `aspect-ratio` value in the narrow-screen media query in `style.css`.
 
 ## Customization
 
 Edit bookmark links directly in `index.html`. To add a new category, copy an existing `.category` block and update the title and links.
 
-**Colors.** Each theme is a block of CSS variables at the top of `style.css`:
+**Colors.** Each theme is a block of CSS variables in `style.css`:
 
 ```css
-body.neon {
-  --bg: #0b0b14;      /* page background */
-  --fg: #c9d1ea;      /* body text */
-  --link: #8b93bd;    /* link color */
-  --accent: #00e5ff;  /* heading, hover, brackets, clock */
-  --accent2: #d12e75; /* category titles, cursor */
-  --dim: #4a4a78;     /* muted details */
+body.vice {
+  --bg: #141022;      /* page background */
+  --fg: #f3e6f1;      /* body text */
+  --link: #b7a2cc;    /* link color, grid dots */
+  --accent: #e13fbd;  /* heading, hover, brackets, clock, dot glow */
+  --accent2: #ffbc53; /* category titles, cursor */
+  --dim: #3f3260;     /* muted details */
 }
 ```
 
-**Adding a theme.** Add a new `body.yourtheme { ... }` block with the same variables, then add it to the `themes` array and the `labels` object in the script at the bottom of `index.html`.
+**Adding a theme.** Add a `body.yourtheme { ... }` block with the same variables, add its name to the `themes` array in the script at the bottom of `index.html`, add a `<button role="radio" data-theme="yourtheme">` to the `.switch`, and widen the switch (`grid-template-columns` in `.switch`, plus a `translateX` rule for the new knob position).
 
-**Glow strength.** In the `.left-container::after` rule in `style.css`, `opacity` controls how strong the glow is, and `blur()` together with `inset` controls how far it spreads. The mask in the same rule fades the glow's edges so it never shows a hard box line.
-
-<details>
-<summary>OLD Blade Runner Design</summary>
-
-![preview](BR2026.png)
-
-### Features
-
-- Categorized bookmarks
-- Live clock with date, fixed at bottom-center
-- Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
-- Custom `> _` favicon in cyan and magenta
-- Theme switcher: cycles between **2019** (default) and **2049**, remembered across sessions
-- Light / dark mode toggle, independent of the theme
-- Animated pixel-art image with scanlines, a soft duotone tint to match the active theme and HUD-style corner brackets
-- Ambient glow behind the image: a blurred copy of the animation bleeds out around the frame, so the glow changes color as the scene moves
-- Small `tyrell terminal 07` tag in the top-left corner
-- Muted accent colors and soft glows, so nothing is harsh on the eyes
-- Responsive: below 1250px wide the image stacks above the links
-- Respects `prefers-reduced-motion` (the flicker and cursor blink are switched off)
-
-### Themes
-
-| Theme | Class | Background | Accent | Secondary | Description |
-|---|---|---|---|---|---|
-| 2019 | `rain` | `#282a36` | `#5fb4c4` teal | `#b8567e` rose | Default. Cyan and magenta neon on a dark purple-blue base |
-| 2049 | `haze` | `#1e1e2e` | `#c98245` amber | `#4f9d96` sage | Sodium-orange glow with a teal pop |
-
-#### Light mode
-
-Each theme has a matching light palette: pale, smoggy backgrounds with deeper accents so text stays readable. Text halos are dropped and the image glow is softened, since glows look smudgy on a light page.
-
-| Theme | Background | Accent | Secondary |
-|---|---|---|---|
-| 2019 light | `#dde2ec` | `#17697b` | `#a23a68` |
-| 2049 light | `#eadfd1` | `#9c5a1d` | `#28746d` |
-
-The two buttons in the top-right switch mode (`light` / `dark`) and theme (`2019` / `2049`). Each shows what you will switch to, and both choices are saved with `localStorage`.
-
-### Customization
-
-Each theme is a block of CSS variables at the top of `style.css`:
-
-```css
-body.rain {
-  --bg: #282a36;      /* page background */
-  --fg: #b8c4d4;      /* body text */
-  --link: #7f8ca3;    /* link color */
-  --accent: #5fb4c4;  /* heading, hover, brackets, clock */
-  --accent2: #b8567e; /* category titles, cursor */
-  --dim: #3b4259;     /* muted details */
-}
-```
-
-</details>
-
-<details>
-<summary>OLD Catppuccin/Dracula Design</summary>
-
-The original version: a minimal terminal / 90s CRT look with Dracula and Catppuccin Mocha themes.
-
-![preview](001.png)
-![preview](002.png)
-
-### Features
-
-- Categorized bookmarks
-- Live clock with date, fixed at bottom-center
-- Blinking cursor animation
-- Custom `> _` favicon
-- Theme switcher: cycles between **Dracula** (default) and **Catppuccin Mocha** with a random accent color on every switch
-- CRT scanline effect on image and page background
-- Phosphor glow on heading and links
-- Pixel-style border around image, accent-colored per theme
-
-### Themes
-
-| Theme | Description |
-|---|---|
-| [Dracula](https://draculatheme.com) | Default. Dark purple palette |
-| [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) | Picks a random accent on every switch: rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, or lavender |
-
-Theme preference is saved across sessions via `localStorage`.
-
-### Fonts
-
-- [Poppins](https://fonts.google.com/specimen/Poppins): everything readable: links, clock, category titles
-- [VT323](https://fonts.google.com/specimen/VT323): heading only, for the retro terminal look
-
-### Files
-
-```
-startpage/
-├── index.html
-├── style.css
-└── cat.webp
-```
-
-### Customization
-
-The Mocha accent colors were set in the `mochaAccents` array in the script at the bottom of `index.html`:
-
-```js
-const mochaAccents = [
-    { name: 'mauve', hex: '#cba6f7' },
-    { name: 'blue',  hex: '#89b4fa' },
-    // add or remove entries here
-];
-```
-
-### Credits
-
-[Cat artwork by Avogado6](https://x.com/avogado6/status/1165595520967954432)
-
-</details>
+**Dot grid.** In the `grid()` function in `index.html`, `gap` is the space between dots and `reach` is how far around the cursor they show.
 
 ## Credits
 
 [Gif artwork by alphacoders.com](https://gifs.alphacoders.com/gifs/view/215468)
 
 [Startpage inspired by kencx](https://github.com/kencx/startpage)
+
+Theme switch and magnetic links inspired by demos in [Takagi-Dev-content/Contents-Code](https://github.com/Takagi-Dev-content/Contents-Code) (rewritten from scratch).
