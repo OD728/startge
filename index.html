@@ -19,7 +19,7 @@
         <div class="switch" role="radiogroup" aria-label="theme">
             <span class="knob"></span>
             <button role="radio" data-theme="vice">vi</button>
-            <button role="radio" data-theme="rain">2019</button>
+            <button role="radio" data-theme="dracula">dracula</button>
             <button role="radio" data-theme="haze">2049</button>
         </div>
     </div>
@@ -98,8 +98,8 @@
         updateClock();
         setInterval(updateClock, 1000);
 
-        // vice = gta 6 (blue/pink/orange sunset), rain = 2019 (cyan/magenta neon), haze = 2049 (sodium orange)
-        const themes = ['vice', 'rain', 'haze'];
+        // vice = gta 6 (blue/pink/orange sunset), dracula = dracula colour scheme (purple/pink), haze = 2049 (sodium orange)
+        const themes = ['vice', 'dracula', 'haze'];
         const stops = document.querySelectorAll('.switch button');
 
         function getSaved() {
