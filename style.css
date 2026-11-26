@@ -31,3 +31,11 @@ body.haze .switch .knob{transform:translateX(124px)}
 #bgfx{position:fixed;inset:0;z-index:0;pointer-events:none}
 
 :root{color-scheme:dark}
+
+/* duckduckgo search line */
+.search{display:flex;align-items:center;gap:10px;width:min(520px,90%);margin:18px auto 0;padding:6px 2px;font:16px "Share Tech Mono",monospace;letter-spacing:.06em;border-bottom:1px solid var(--dim);transition:border-color .2s,box-shadow .2s}
+.search label{color:var(--accent2);text-shadow:0 0 6px color-mix(in srgb,var(--accent2) 35%,transparent);cursor:text;user-select:none}
+.search input{flex:1;min-width:0;padding:0;background:0 0;border:0;outline:0;color:var(--fg);font:inherit;letter-spacing:inherit;caret-color:var(--accent)}
+.search input::placeholder{color:var(--dim);opacity:1}
+.search input::-webkit-search-cancel-button{display:none}
+.search:focus-within{border-color:var(--accent);box-shadow:0 1px 0 0 var(--accent),0 6px 12px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
