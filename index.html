@@ -40,6 +40,7 @@
                 <p>&gt; cd ~/<span class="blinking">_</span></p>
             </div>
 
+
             <div class="bookmarks">
                 <div class="category">
                     <div class="links">
@@ -78,6 +79,10 @@
                     </div>
                 </div>
             </div>
+            <form class="search" action="https://duckduckgo.com/" method="get" role="search">
+                <label for="q">ddg&gt;</label>
+                <input id="q" name="q" type="search" placeholder="search the web" autocomplete="off" spellcheck="false" autofocus>
+            </form>
         </div>
     </div>
 
@@ -131,6 +136,13 @@
         applyTheme(getSaved());
 
         stops.forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
+
+        // press / anywhere to jump to the search line
+        const q = document.getElementById('q');
+        document.addEventListener('keydown', e => {
+            if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+            if (e.key === 'Escape' && document.activeElement === q) q.blur();
+        });
 
         // saved theme shows on load without fading in
         requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.remove('instant')));

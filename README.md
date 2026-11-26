@@ -7,6 +7,7 @@
 ## Features
 
 - Categorized bookmarks
+- DuckDuckGo search line below the bookmarks (`ddg>`): focused on load, press `/` anywhere to jump to it, `Esc` to leave
 - Live clock with date, fixed at bottom-center
 - Neon `> cd ~/_` heading with a slight RGB split, an occasional flicker and a blinking cursor
 - Custom favicon (`favicon.ico`)
